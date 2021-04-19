@@ -9,8 +9,8 @@
 const mysql = require('mysql');
 const inquirer = require('inquirer');
 const console_table = require('console.table');
-const figlet = require('figlet');
-const chalk = require('chalk');
+// const figlet = require('figlet');
+// const chalk = require('chalk');
 
 const title = require('./lib/title');
 
@@ -28,8 +28,31 @@ const connection = mysql.createConnection({
   database: 'employee_trackerdb',
 });
 
-console.log(title);
-launchTitle(appTitle.hex, appTitle.text);
-launchTitle(depTitle.hex, depTitle.text);
-launchTitle(roleTitle.hex, roleTitle.text);
-launchTitle(employeeTitle.hex, employeeTitle.text);
+const fullTable = () => {
+  let query = `SELECT employee.id, employee.first_name, employee.last_name, employee.manager_id, role.title, role.salary, department.name
+  FROM employee
+  INNER JOIN role
+  ON employee.role_id=role.id
+  INNER JOIN department
+  ON role.department_id=department.id
+  ORDER BY employee.id`;
+  connection.query(query, (err, res) => {
+    if (err) throw err;
+    console.table(res);
+  });
+};
+
+fullTable();
+
+// connection.query('SELECT employee.id, employee.first_name, employee.last_name,  FROM department', (err, res) => {
+//   if (err) throw err;
+//   res.forEach(({ name }) => {
+//     console.table(name);
+//   });
+// });
+
+// console.log(title);
+// launchTitle(appTitle.hex, appTitle.text);
+// launchTitle(depTitle.hex, depTitle.text);
+// launchTitle(roleTitle.hex, roleTitle.text);
+// launchTitle(employeeTitle.hex, employeeTitle.text);

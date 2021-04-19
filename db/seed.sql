@@ -16,13 +16,13 @@ VALUES
 -- performance
 ("Actor", 1000000.00, 2),
 -- executive
-("Vice President of East Coast Television and Microwave Oven Programming", 9000000.00, 3),
+("VP TV & Microwave Programming", 9000000.00, 3),
 ("CEO", 9999999.99, 3),
-("Vice President of West Coast News, Web Content, and Theme Park Talent Relations", 3000000.00, 3),
+("VP News & Theme Park Talent", 3000000.00, 3),
 ("Assistant", 100000.00, 3),
 ("Page", 50000.00, 3),
 -- production
-("Producer", 500000.00, 4); 
+("Producer", 500000.00, 4);
 
 -- employee table
 INSERT INTO employee(first_name, last_name, role_id, manager_id)
