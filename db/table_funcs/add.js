@@ -5,8 +5,11 @@
  *
  */
 
-const connection = require('../connection');
+// dependencies
 const chalk = require('chalk');
+
+// modules
+const connection = require('../connection');
 
 // *** CONSTRUCTORS *** //
 
@@ -85,6 +88,12 @@ class Role {
   }
 }
 
-module.exports.Department = Department;
-module.exports.Employee = Employee;
-module.exports.Role = Role;
+module.exports = {
+  Department: Department,
+  Employee: Employee,
+  Role: Role,
+};
+
+// module.exports.Department = Department;
+// module.exports.Employee = Employee;
+// module.exports.Role = Role;

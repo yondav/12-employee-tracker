@@ -9,10 +9,11 @@
 // const mysql = require('mysql');
 // const figlet = require('figlet');
 // const chalk = require('chalk');
-const inquirer = require('inquirer');
+// const inquirer = require('inquirer');
 const console_table = require('console.table');
 
-const view = require('./db/table_funcs/table_views');
+// modules
+// const view = require('./db/table_funcs/table_views');
 const add = require('./db/table_funcs/add');
 const edit = require('./db/table_funcs/edit');
 const prompts = require('./lib/prompts');
@@ -22,38 +23,14 @@ const init = () => {
   console.clear();
   launchTitle(appTitle.hex, appTitle.text);
   console.log(prompts.welcomePrompt);
-  inquirer
-    .prompt(prompts.toDoPrompt)
-    .then((answer) => {
-      switch (answer.todo) {
-        case 'View All Employees':
-          console.clear();
-          launchTitle(employeeTitle.hex, employeeTitle.text);
-          view.empTable();
-          break;
-        case 'View Employees By Department':
-          console.clear();
-          launchTitle(depTitle.hex, depTitle.text);
-          prompts.selectDep();
-          break;
-        case 'View Employees By Role':
-          console.clear();
-          launchTitle(roleTitle.hex, roleTitle.text);
-          prompts.selectRole();
-          break;
-      }
-    })
-    .then(() => {
-      console.log('\n');
-      inquirer.prompt(prompts.editPrompt).then((answer) => {
-        if ((answer = true)) {
-          console.log('oh yeah');
-        }
-      });
-    });
+  prompts.toDoPrompt();
+  // .then(() => {
+  //   prompts.editPrompt();
+  // });
 };
 
 init();
+
 // view.empTable();
 // view.viewByTable('department.name', 'Writing');
 // view.viewByTable('role.title', 'Writer');

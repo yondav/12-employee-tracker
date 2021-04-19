@@ -5,6 +5,7 @@
  *
  */
 
+// modules
 const connection = require('../connection');
 
 // display all employees
@@ -69,7 +70,9 @@ const viewRole = () => {
   });
 };
 
-module.exports.empTable = empTable;
-module.exports.viewByTable = viewByTable;
-module.exports.viewDep = viewDep;
-module.exports.viewRole = viewRole;
+module.exports = {
+  empTable: empTable,
+  viewByTable: viewByTable,
+  viewDep: viewDep,
+  viewRole: viewRole,
+};
