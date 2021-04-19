@@ -4,6 +4,7 @@
  * @description: all functionality for adding to db here
  *
  */
+
 const connection = require('../connection');
 const chalk = require('chalk');
 
@@ -83,11 +84,6 @@ class Role {
     });
   }
 }
-
-// add query
-const add = () => {
-  let query = ``;
-};
 
 module.exports.Department = Department;
 module.exports.Employee = Employee;

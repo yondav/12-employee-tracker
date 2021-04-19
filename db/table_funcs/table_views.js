@@ -46,5 +46,27 @@ const viewByTable = (key, val) => {
   });
 };
 
+// view all departments
+const viewDep = () => {
+  let query = `SELECT * FROM department`;
+
+  connection.query(query, (err, res) => {
+    if (err) throw err;
+    console.table(res);
+  });
+};
+
+// view all roles
+const viewRole = () => {
+  let query = `SELECT id, title, CONCAT('$',role.salary) AS salary FROM role`;
+
+  connection.query(query, (err, res) => {
+    if (err) throw err;
+    console.table(res);
+  });
+};
+
 module.exports.empTable = empTable;
 module.exports.viewByTable = viewByTable;
+module.exports.viewDep = viewDep;
+module.exports.viewRole = viewRole;
