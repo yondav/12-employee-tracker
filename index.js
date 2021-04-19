@@ -15,13 +15,22 @@ const console_table = require('console.table');
 const view = require('./db/table_funcs/table_views');
 const add = require('./db/table_funcs/add');
 const edit = require('./db/table_funcs/edit');
+const prompts = require('./lib/prompts');
 const { launchTitle, appTitle, depTitle, roleTitle, employeeTitle } = require('./lib/title');
 
-view.empTable();
-view.viewByTable('department.name', 'Writing');
-view.viewByTable('role.title', 'Writer');
-view.viewDep();
-view.viewRole();
+const init = () => {
+  console.clear();
+  launchTitle(appTitle.hex, appTitle.text);
+  console.log(prompts.welcomePrompt);
+  inquirer.prompt(prompts.toDoPrompt);
+};
+
+init();
+// view.empTable();
+// view.viewByTable('department.name', 'Writing');
+// view.viewByTable('role.title', 'Writer');
+// view.viewDep();
+// view.viewRole();
 
 // const editSample = {
 //   table: 'department',
