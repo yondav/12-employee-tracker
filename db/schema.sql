@@ -23,6 +23,5 @@ CREATE TABLE employee (
   last_name VARCHAR(30),
   role_id INT, -- ref to employee role
   manager_id INT, -- ref to another employee (manager)
-
   PRIMARY KEY (id)
 );
