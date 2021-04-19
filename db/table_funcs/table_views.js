@@ -22,11 +22,12 @@ const empTable = () => {
 
   connection.query(query, (err, res) => {
     if (err) throw err;
+    console.log('\n');
     console.table(res);
   });
 };
 
-// display employees by department
+// display employees by department or role
 const viewByTable = (key, val) => {
   let query = `SELECT employee.id, employee.last_name, employee.first_name, role.title, department.name 
   AS department, CONCAT('$',role.salary)
@@ -52,6 +53,7 @@ const viewDep = () => {
 
   connection.query(query, (err, res) => {
     if (err) throw err;
+    departments.push(res.name);
     console.table(res);
   });
 };

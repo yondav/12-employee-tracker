@@ -22,7 +22,19 @@ const init = () => {
   console.clear();
   launchTitle(appTitle.hex, appTitle.text);
   console.log(prompts.welcomePrompt);
-  inquirer.prompt(prompts.toDoPrompt);
+  inquirer.prompt(prompts.toDoPrompt).then((answer) => {
+    switch (answer.todo) {
+      case 'View All Employees':
+        console.clear();
+        launchTitle(employeeTitle.hex, employeeTitle.text);
+        view.empTable();
+        break;
+      case 'View Employees By Department':
+        console.clear();
+        launchTitle(depTitle.hex, depTitle.text);
+        prompts.selectDep().then((answer) => view.viewByTable('department.name', answer));
+    }
+  });
 };
 
 init();
