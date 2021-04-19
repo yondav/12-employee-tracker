@@ -22,25 +22,35 @@ const init = () => {
   console.clear();
   launchTitle(appTitle.hex, appTitle.text);
   console.log(prompts.welcomePrompt);
-  inquirer.prompt(prompts.toDoPrompt).then((answer) => {
-    switch (answer.todo) {
-      case 'View All Employees':
-        console.clear();
-        launchTitle(employeeTitle.hex, employeeTitle.text);
-        view.empTable();
-        break;
-      case 'View Employees By Department':
-        console.clear();
-        launchTitle(depTitle.hex, depTitle.text);
-        prompts.selectDep();
-        break;
-      case 'View Employees By Role':
-        console.clear();
-        launchTitle(roleTitle.hex, roleTitle.text);
-        prompts.selectRole();
-        break;
-    }
-  });
+  inquirer
+    .prompt(prompts.toDoPrompt)
+    .then((answer) => {
+      switch (answer.todo) {
+        case 'View All Employees':
+          console.clear();
+          launchTitle(employeeTitle.hex, employeeTitle.text);
+          view.empTable();
+          break;
+        case 'View Employees By Department':
+          console.clear();
+          launchTitle(depTitle.hex, depTitle.text);
+          prompts.selectDep();
+          break;
+        case 'View Employees By Role':
+          console.clear();
+          launchTitle(roleTitle.hex, roleTitle.text);
+          prompts.selectRole();
+          break;
+      }
+    })
+    .then(() => {
+      console.log('\n');
+      inquirer.prompt(prompts.editPrompt).then((answer) => {
+        if ((answer = true)) {
+          console.log('oh yeah');
+        }
+      });
+    });
 };
 
 init();
