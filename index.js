@@ -12,14 +12,22 @@
 const inquirer = require('inquirer');
 const console_table = require('console.table');
 
-const empTable = require('./db/table_funcs/emp_table');
-const depTable = require('./db/table_funcs/dep_table');
-const roleTable = require('./db/table_funcs/role_table');
+const view = require('./db/table_funcs/table_views');
+const add = require('./db/table_funcs/add');
 const { launchTitle, appTitle, depTitle, roleTitle, employeeTitle } = require('./lib/title');
 
-empTable();
-depTable('Writing');
-roleTable('Writer');
+view.empTable();
+view.viewByTable('department.name', 'Writing');
+view.viewByTable('role.title', 'Writer');
+
+// let entourage = new add.Department('Entourage');
+// entourage.add();
+
+// let role = new add.Role('Member', 100000.0, 5);
+// role.add();
+
+// let dotCom = new add.Employee('Com', 'Dot', 11, 7);
+// dotCom.add();
 
 // console.log(title);
 // launchTitle(appTitle.hex, appTitle.text);
