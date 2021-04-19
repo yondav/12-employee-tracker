@@ -32,7 +32,13 @@ const init = () => {
       case 'View Employees By Department':
         console.clear();
         launchTitle(depTitle.hex, depTitle.text);
-        prompts.selectDep().then((answer) => view.viewByTable('department.name', answer));
+        prompts.selectDep();
+        break;
+      case 'View Employees By Role':
+        console.clear();
+        launchTitle(roleTitle.hex, roleTitle.text);
+        prompts.selectRole();
+        break;
     }
   });
 };
