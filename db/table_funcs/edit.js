@@ -5,11 +5,8 @@
  *
  */
 
-// dependencies
-const chalk = require('chalk');
-
-// modules
 const connection = require('../connection');
+const chalk = require('chalk');
 
 // for all edit queries. passed 5 arguments.
 const edit = (table, setProp, setVal, whereProp, whereVal) => {

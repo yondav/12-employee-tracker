@@ -5,7 +5,6 @@
  *
  */
 
-// dependencies
 const mysql = require('mysql');
 
 // mysql password
