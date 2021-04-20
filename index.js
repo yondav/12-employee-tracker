@@ -8,7 +8,7 @@
 // dependencies
 // const mysql = require('mysql');
 // const figlet = require('figlet');
-const chalk = require('chalk');
+// const chalk = require('chalk');
 const inquirer = require('inquirer');
 const console_table = require('console.table');
 
@@ -20,51 +20,53 @@ const prompts = require('./lib/prompts');
 const { launchTitle, appTitle, depTitle, roleTitle, employeeTitle } = require('./lib/title');
 const connection = require('./db/connection');
 
-const init = () => {
-  console.clear();
-  launchTitle(appTitle.hex, appTitle.text);
+const init = async () => {
   prompts.welcomePrompt();
   inquirer.prompt(prompts.enter).then((res) => {
-    res.continue === true
-      ? inquirer.prompt(prompts.menu).then((res) => {
-          switch (res.menu) {
-            case 'view':
-              inquirer.prompt(prompts.viewBy).then((res) => {
-                console.clear();
-                switch (res.viewBy) {
-                  case 'employee':
-                    launchTitle(employeeTitle.hex, employeeTitle.text);
-                    view.empTable();
-                    break;
-                  case 'department':
-                    launchTitle(depTitle.hex, depTitle.text);
-                    prompts.selectDep();
-                    break;
-                  case 'role':
-                    launchTitle(roleTitle.hex, roleTitle.text);
-                    prompts.selectRole();
-                    break;
-                }
-                prompts.back(init());
-              });
-          }
-        })
-      : init();
+    if (res.continue === true) {
+      inquirer.prompt(prompts.menuPrompt).then((res) => {
+        switch (res.menu) {
+          case 'view':
+            prompts.viewTable();
+            break;
+        }
+      });
+    } else {
+      init();
+    }
   });
 
-  // .then(() => {
-  //   prompts.toDoPrompt();
-  // });
-  // prompts.toDoPrompt().then(() => {
-  //   inquirer.prompt(prompts.editPrompt);
-  // });
-  // .then(() => {
-  //   console.log('\n');
-  //   inquirer.prompt(prompts.editPrompt).then((answer) => {
-  //     if ((answer = true)) {
-  //       console.log('oh yeah');
-  //     }
-  //   });
+  // console.clear();
+  // launchTitle(appTitle.hex, appTitle.text);
+  // prompts.welcomePrompt();
+  // inquirer.prompt(prompts.enter).then((res) => {
+  //   if (res.continue === true) {
+  //     inquirer.prompt(prompts.menu).then((res) => {
+  //       switch (res.menu) {
+  //         case 'view':
+  //           inquirer.prompt(prompts.viewBy).then((res) => {
+  //             console.clear();
+  //             switch (res.viewBy) {
+  //               case 'employee':
+  //                 launchTitle(employeeTitle.hex, employeeTitle.text);
+  //                 view.empTable();
+  //                 break;
+  //               case 'department':
+  //                 launchTitle(depTitle.hex, depTitle.text);
+  //                 prompts.selectDep();
+  //                 break;
+  //               case 'role':
+  //                 launchTitle(roleTitle.hex, roleTitle.text);
+  //                 prompts.selectRole();
+  //                 break;
+  //             }
+  //             prompts.back(init);
+  //           });
+  //           break;
+  //         case 'add':
+  //       }
+  //     });
+  //   }
   // });
 };
 
