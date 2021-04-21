@@ -24,6 +24,9 @@ const init = async () => {
             break;
           case 'add':
             prompts.add();
+            break;
+          case 'edit':
+            prompts.edit();
         }
       });
     } else {
