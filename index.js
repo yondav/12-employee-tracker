@@ -34,9 +34,6 @@ const init = async () => {
 
 init();
 
-// const add = require('./db/table_funcs/add');
-// const edit = require('./db/table_funcs/edit');
-
 // const editSample = {
 //   table: 'department',
 //   setProp: 'name',
