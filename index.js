@@ -6,21 +6,14 @@
  */
 
 // dependencies
-// const mysql = require('mysql');
-// const figlet = require('figlet');
-// const chalk = require('chalk');
 const inquirer = require('inquirer');
 const console_table = require('console.table');
 
 // modules
-const view = require('./db/table_funcs/table_views');
-const add = require('./db/table_funcs/add');
-const edit = require('./db/table_funcs/edit');
 const prompts = require('./lib/prompts');
-const { launchTitle, appTitle, depTitle, roleTitle, employeeTitle } = require('./lib/title');
-const connection = require('./db/connection');
 
 const init = async () => {
+  // prompts.optionsQuery(`SELECT name FROM department`);
   prompts.welcomePrompt();
   inquirer.prompt(prompts.enter).then((res) => {
     if (res.continue === true) {
@@ -29,53 +22,20 @@ const init = async () => {
           case 'view':
             prompts.viewTable();
             break;
+          case 'add':
+            prompts.add();
         }
       });
     } else {
       init();
     }
   });
-
-  // console.clear();
-  // launchTitle(appTitle.hex, appTitle.text);
-  // prompts.welcomePrompt();
-  // inquirer.prompt(prompts.enter).then((res) => {
-  //   if (res.continue === true) {
-  //     inquirer.prompt(prompts.menu).then((res) => {
-  //       switch (res.menu) {
-  //         case 'view':
-  //           inquirer.prompt(prompts.viewBy).then((res) => {
-  //             console.clear();
-  //             switch (res.viewBy) {
-  //               case 'employee':
-  //                 launchTitle(employeeTitle.hex, employeeTitle.text);
-  //                 view.empTable();
-  //                 break;
-  //               case 'department':
-  //                 launchTitle(depTitle.hex, depTitle.text);
-  //                 prompts.selectDep();
-  //                 break;
-  //               case 'role':
-  //                 launchTitle(roleTitle.hex, roleTitle.text);
-  //                 prompts.selectRole();
-  //                 break;
-  //             }
-  //             prompts.back(init);
-  //           });
-  //           break;
-  //         case 'add':
-  //       }
-  //     });
-  //   }
-  // });
 };
 
 init();
-// view.empTable();
-// view.viewByTable('department.name', 'Writing');
-// view.viewByTable('role.title', 'Writer');
-// view.viewDep();
-// view.viewRole();
+
+// const add = require('./db/table_funcs/add');
+// const edit = require('./db/table_funcs/edit');
 
 // const editSample = {
 //   table: 'department',
@@ -100,9 +60,3 @@ init();
 
 // let dotCom = new add.Employee('Com', 'Dot', 11, 7);
 // dotCom.add();
-
-// console.log(title);
-// launchTitle(appTitle.hex, appTitle.text);
-// launchTitle(depTitle.hex, depTitle.text);
-// launchTitle(roleTitle.hex, roleTitle.text);
-// launchTitle(employeeTitle.hex, employeeTitle.text);

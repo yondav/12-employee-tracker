@@ -40,7 +40,7 @@ VALUES
 ("Jack", "Donaghy", 5, 9),
 ("Don", "Geiss", 6, NULL),
 ("Devon", "Banks", 7, 9),
-("Jonathan", NULL, 8, 8),
+("Jonathan", "Pancholy", 8, 8),
 ("Kenneth", "Parcell", 9, 8),
 -- production
 ("Pete", "Hornberger", 10, 8);
