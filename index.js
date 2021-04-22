@@ -27,6 +27,10 @@ const init = async () => {
             break;
           case 'edit':
             prompts.edit();
+            break;
+          case 'remove':
+            prompts.remove();
+            break;
         }
       });
     } else {
