@@ -21,7 +21,9 @@ const update = (table, setProp, setVal, whereProp, whereVal) => {
     err
       ? console.log(chalk.hex('#E47474').bgHex('#000000')("Uh-Oh...Something's not right. Try again!"), err)
       : console.log(
-          chalk.hex('#85E474').bgHex('#000000')(`Success! ${setProp} has been changed to ${setVal} at ${whereVal} in the ${table} table!`)
+          chalk.hex('#85E474').bgHex('#000000')(
+            '\n | Success! ' + setProp + ' has been changed to ' + setVal + ' at ' + whereVal + ' in the ' + table + ' table! | \n'
+          )
         );
   });
 };

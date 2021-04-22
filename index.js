@@ -21,7 +21,7 @@ const init = () => {
           switch (res.menu) {
             case 'view':
               prompts.viewTable().then(() => {
-                inquirer.prompt(prompts.enter).then((res) => (res.continue === true ? init.init() : process.exit(0)));
+                inquirer.prompt(prompts.enter).then((res) => (res.continue === true ? init() : process.exit(0)));
               });
               break;
             case 'add':
@@ -40,27 +40,3 @@ const init = () => {
 };
 
 init();
-
-// const editSample = {
-//   table: 'department',
-//   setProp: 'name',
-//   setVal: 'test edit',
-//   whereProp: 'name',
-//   whereVal: 'Production',
-// };
-// edit.edit(
-//   editSample.table,
-//   editSample.setProp,
-//   editSample.setVal,
-//   editSample.whereProp,
-//   editSample.whereVal
-// );
-
-// let entourage = new add.Department('Entourage');
-// entourage.add();
-
-// let role = new add.Role('Member', 100000.0, 5);
-// role.add();
-
-// let dotCom = new add.Employee('Com', 'Dot', 11, 7);
-// dotCom.add();

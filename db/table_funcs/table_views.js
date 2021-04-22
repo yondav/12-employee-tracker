@@ -23,7 +23,6 @@ const empTable = () => {
 
   connection.query(query, (err, res) => {
     if (err) throw err;
-    // console.log('\n');
     console.table(res);
   });
 };
@@ -44,7 +43,6 @@ const viewByTable = (key, val) => {
 
   connection.query(query, val, (err, res) => {
     if (err) throw err;
-    console.log('\n');
     console.table(res);
   });
 };
