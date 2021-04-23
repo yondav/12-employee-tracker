@@ -6,10 +6,12 @@
  */
 
 // modules
+const inquirer = require('inquirer');
 const connection = require('../connection');
+const chalk = require('chalk');
 
 // display all employees
-const empTable = () => {
+const empTable = (cb) => {
   let query = `SELECT employee.id, employee.last_name, employee.first_name, role.title, department.name 
   AS department, CONCAT('$',role.salary)
   AS salary, CONCAT(manager.last_name, ', ', manager.first_name) 
@@ -24,11 +26,12 @@ const empTable = () => {
   connection.query(query, (err, res) => {
     if (err) throw err;
     console.table(res);
+    cb();
   });
 };
 
 // display employees by department or role
-const viewByTable = (key, val) => {
+const viewByTable = (key, val, cb) => {
   let query = `SELECT employee.id, employee.last_name, employee.first_name, role.title, department.name 
   AS department, CONCAT('$',role.salary)
   AS salary, CONCAT(manager.last_name, ', ', manager.first_name) 
@@ -41,36 +44,30 @@ const viewByTable = (key, val) => {
   ON manager.id = employee.manager_id
   WHERE ${key} = ?`;
 
+  let totalSal = `SELECT CONCAT('$', SUM(role.salary) OVER())
+  AS total_salary FROM employee
+  LEFT JOIN role 
+  On employee.role_id = role.id 
+  LEFT JOIN department 
+  ON role.department_id = department.id 
+  LEFT JOIN employee manager 
+  ON manager.id = employee.manager_id
+  WHERE ${key} = ?
+  LIMIT 1;`;
+
   connection.query(query, val, (err, res) => {
     if (err) throw err;
     console.table(res);
   });
-};
 
-// view all departments
-const viewDep = () => {
-  let query = `SELECT * FROM department`;
-
-  connection.query(query, (err, res) => {
+  connection.query(totalSal, val, (err, res) => {
     if (err) throw err;
-    departments.push(res.name);
-    console.table(res);
-  });
-};
-
-// view all roles
-const viewRole = () => {
-  let query = `SELECT id, title, CONCAT('$',role.salary) AS salary FROM role`;
-
-  connection.query(query, (err, res) => {
-    if (err) throw err;
-    console.table(res);
+    console.log(chalk.hex('#E47474').bgHex('#000000')('\n | Total Payroll: ' + res[0].total_salary + ' | \n'));
+    cb();
   });
 };
 
 module.exports = {
   empTable: empTable,
   viewByTable: viewByTable,
-  viewDep: viewDep,
-  viewRole: viewRole,
 };

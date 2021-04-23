@@ -14,29 +14,28 @@ const prompts = require('./lib/prompts');
 
 const init = () => {
   // prompts.optionsQuery(`SELECT name FROM department`);
-  prompts.welcomePrompt();
   inquirer.prompt(prompts.enter).then((res) => {
     res.continue === true
       ? inquirer.prompt(prompts.menuPrompt).then((res) => {
           switch (res.menu) {
             case 'view':
-              prompts.viewTable().then(() => {
-                inquirer.prompt(prompts.enter).then((res) => (res.continue === true ? init() : process.exit(0)));
-              });
+              prompts.viewTable(init);
               break;
             case 'add':
-              prompts.add();
+              prompts.add(init);
               break;
             case 'edit':
-              prompts.edit();
+              prompts.edit(init);
               break;
             case 'remove':
-              prompts.remove();
+              prompts.remove(init);
               break;
           }
         })
-      : init();
+      : process.exit(0);
   });
 };
 
+console.clear();
+prompts.welcomePrompt();
 init();
