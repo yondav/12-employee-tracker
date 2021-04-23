@@ -13,7 +13,6 @@ const console_table = require('console.table');
 const prompts = require('./lib/prompts');
 
 const init = () => {
-  // prompts.optionsQuery(`SELECT name FROM department`);
   inquirer.prompt(prompts.enter).then((res) => {
     res.continue === true
       ? inquirer.prompt(prompts.menuPrompt).then((res) => {
