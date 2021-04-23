@@ -5,10 +5,14 @@
  *
  */
 
-// modules
+// dependencies
 const inquirer = require('inquirer');
 const connection = require('../connection');
 const chalk = require('chalk');
+
+// modules
+const { roleOptions, manOptions, depOptions, prompts, optionsQuery } = require('../../lib/prompts');
+const { launchTitle, depTitle, roleTitle, employeeTitle, mgmtTitle } = require('../../lib/title');
 
 // display all employees
 const empTable = (cb) => {
@@ -67,7 +71,39 @@ const viewByTable = (key, val, cb) => {
   });
 };
 
-module.exports = {
-  empTable: empTable,
-  viewByTable: viewByTable,
-};
+// logic for if user selects view from main menu
+const viewTable = (cb) =>
+  inquirer.prompt(prompts[2]).then((res) => {
+    console.clear();
+    switch (res.select_view) {
+      case 'employee':
+        launchTitle(employeeTitle.hex, employeeTitle.text);
+        empTable(cb);
+        break;
+      case 'department':
+        launchTitle(depTitle.hex, depTitle.text);
+        optionsQuery(`SELECT name FROM department`, 'name', depOptions).then(() => {
+          return inquirer.prompt(prompts[3]).then((res) => viewByTable('department.name', res.select_dep, cb));
+        });
+        break;
+      case 'role':
+        launchTitle(roleTitle.hex, roleTitle.text);
+        optionsQuery(`SELECT title FROM role`, 'title', roleOptions).then(() => {
+          return inquirer.prompt(prompts[4]).then((res) => viewByTable('role.title', res.select_role, cb));
+        });
+        break;
+      case 'manager':
+        launchTitle(mgmtTitle.hex, mgmtTitle.text);
+        optionsQuery(`SELECT CONCAT(last_name, ', ', first_name) AS manager FROM employee`, 'manager', manOptions).then(() => {
+          return inquirer.prompt(prompts[6]).then((res) => {
+            let manager = res.select_mgmt.split(',');
+            connection.query('SELECT id FROM employee WHERE last_name = ?', manager[0], (err, res) => {
+              viewByTable('employee.manager_id', res[0].id, cb);
+            });
+          });
+        });
+        break;
+    }
+  });
+
+module.exports = { empTable, viewByTable, viewTable };

@@ -11,23 +11,27 @@ const console_table = require('console.table');
 
 // modules
 const prompts = require('./lib/prompts');
+const { viewTable } = require('./db/table_funcs/table_views');
+const { add } = require('./db/table_funcs/add');
+const { edit } = require('./db/table_funcs/edit');
+const { remove } = require('./db/table_funcs/delete');
 
 const init = () => {
-  inquirer.prompt(prompts.enter).then((res) => {
+  inquirer.prompt(prompts.prompts[0]).then((res) => {
     res.continue === true
-      ? inquirer.prompt(prompts.menuPrompt).then((res) => {
-          switch (res.menu) {
+      ? inquirer.prompt(prompts.prompts[1]).then((res) => {
+          switch (res.main_menu) {
             case 'view':
-              prompts.viewTable(init);
+              viewTable(init);
               break;
             case 'add':
-              prompts.add(init);
+              add(init);
               break;
             case 'edit':
-              prompts.edit(init);
+              edit(init);
               break;
             case 'remove':
-              prompts.remove(init);
+              remove(init);
               break;
           }
         })
