@@ -42,21 +42,21 @@ const empTable = (cb) => {
 };
 
 // display employees by department or role
-const viewByTable = (key, val, cb) => {
+const viewByTable = (column, val, cb) => {
   let query = `SELECT employee.id, employee.last_name, employee.first_name, role.title, department.name AS department, CONCAT('$',role.salary) AS salary, CONCAT(manager.last_name, ', ', manager.first_name) AS manager 
   FROM employee
   LEFT JOIN role ON employee.role_id = role.id 
   LEFT JOIN department ON role.department_id = department.id 
   LEFT JOIN employee manager 
   ON manager.id = employee.manager_id
-  WHERE ${key} = ?`;
+  WHERE ${column} = ?`;
 
   let totalSal = `SELECT CONCAT('$', SUM(role.salary) OVER())
   AS total_salary FROM employee
   LEFT JOIN role ON employee.role_id = role.id 
   LEFT JOIN department ON role.department_id = department.id 
   LEFT JOIN employee manager ON manager.id = employee.manager_id
-  WHERE ${key} = ?
+  WHERE ${column} = ?
   LIMIT 1;`;
 
   connection.query(query, val, (err, res) => {
