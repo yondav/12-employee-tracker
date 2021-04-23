@@ -1,5 +1,5 @@
 /**
- * /db/table_funcs/connection.js
+ * /db/connection.js
  *
  * @description: connection file sets the connection to MYSQL db
  *
