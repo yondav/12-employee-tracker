@@ -84,7 +84,6 @@ const viewTable = (cb) =>
       case 'department':
         launchTitle(depTitle.hex, depTitle.text);
         optionsQuery(`SELECT name FROM department`, 'name', depOptions).then((res) => {
-          console.log(res);
           return inquirer.prompt(prompts[3]).then((res) => viewByTable('department.name', res.select_dep, cb));
         });
         break;
