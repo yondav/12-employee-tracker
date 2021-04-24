@@ -57,7 +57,7 @@ const edit = (cb) => {
                       inquirer.prompt(prompts[4]).then((res) => {
                         let role = res.select_role;
                         connection.query(`SELECT id FROM role WHERE title = ?`, role, (err, res) => {
-                          update('employee', 'role_id', res[0].id, 'id', res[0].id, cb);
+                          update('employee', 'role_id', res[0].id, 'id', id, cb);
                         });
                       })
                     );
@@ -71,7 +71,8 @@ const edit = (cb) => {
                       inquirer.prompt(prompts[6]).then((res) => {
                         let manager = res.select_mgmt.split(',');
                         connection.query(`SELECT id FROM employee WHERE last_name = ?`, manager[0], (err, res) => {
-                          update('employee', 'manager_id', res[0].id, 'id', res[0].id, cb);
+                          update('employee', 'manager_id', res[0].id, 'id', id, cb);
+                          console.log(res[0].id);
                         });
                       });
                     });

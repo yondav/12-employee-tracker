@@ -65,8 +65,9 @@ const viewByTable = (column, val, cb) => {
   });
 
   connection.query(totalSal, val, (err, res) => {
-    if (err) throw err;
-    console.log(chalk.hex('#E47474').bgHex('#000000')('\n | Total Payroll: ' + res[0].total_salary + ' | \n'));
+    res == ''
+      ? console.log(chalk.hex('#E47474').bgHex('#000000')('\n | Oops! No Employees Here Yet... | \n'))
+      : console.log(chalk.hex('#E47474').bgHex('#000000')('\n | Total Payroll: ' + res[0].total_salary + ' | \n'));
     cb();
   });
 };
@@ -82,7 +83,8 @@ const viewTable = (cb) =>
         break;
       case 'department':
         launchTitle(depTitle.hex, depTitle.text);
-        optionsQuery(`SELECT name FROM department`, 'name', depOptions).then(() => {
+        optionsQuery(`SELECT name FROM department`, 'name', depOptions).then((res) => {
+          console.log(res);
           return inquirer.prompt(prompts[3]).then((res) => viewByTable('department.name', res.select_dep, cb));
         });
         break;

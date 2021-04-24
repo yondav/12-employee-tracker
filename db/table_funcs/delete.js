@@ -11,7 +11,7 @@ const chalk = require('chalk');
 
 // modules
 const connection = require('../connection');
-const { roleOptions, empOptions, depOptions, prompts, optionsQuery } = require('../../lib/prompts');
+const { roleOptions, empOptions, depOptions, prompts, optionsQuery, removeOpt } = require('../../lib/prompts');
 const { depTitle, roleTitle, employeeTitle, launchTitle } = require('../../lib/title');
 
 // // delete query
@@ -33,8 +33,8 @@ const remove = (cb) => {
         optionsQuery(`SELECT CONCAT(last_name, ', ', first_name) AS name FROM employee;`, 'name', empOptions).then(() =>
           inquirer.prompt(prompts[5]).then((res) => {
             let employee = res.select_emp.split(',');
-            console.log(employee[0]);
             deleteQuery('employee', 'last_name', employee[0], cb);
+            removeOpt(empOptions, res.select_emp);
           })
         );
         break;
@@ -42,13 +42,17 @@ const remove = (cb) => {
         launchTitle(depTitle.hex, depTitle.text);
         optionsQuery(`SELECT name FROM department`, 'name', depOptions)
           .then(() => inquirer.prompt(prompts[3]))
-          .then((res) => deleteQuery('department', 'name', res.select_dep, cb));
+          .then((res) => {
+            deleteQuery('department', 'name', res.select_dep, cb);
+            removeOpt(depOptions, res.select_dep);
+          });
         break;
       case 'role':
         launchTitle(roleTitle.hex, roleTitle.text);
         optionsQuery(`SELECT title FROM role`, 'title', roleOptions).then(() =>
           inquirer.prompt(prompts[4]).then((res) => {
             deleteQuery('role', 'title', res.select_role, cb);
+            removeOpt(roleOptions, res.select_role);
           })
         );
         break;
