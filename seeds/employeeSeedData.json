@@ -1,0 +1,79 @@
+[
+  {
+    "first_name": "Liz",
+    "last_name": "Lemon",
+    "role": "Head Writer",
+    "manager_id": 8
+  },
+  {
+    "first_name": "Frank",
+    "last_name": "Rossitano",
+    "role": "Writer",
+    "manager_id": 1
+  },
+  {
+    "first_name": "Toofer",
+    "last_name": "Spurlock",
+    "role": "Writer",
+    "manager_id": 1
+  },
+  {
+    "first_name": "Johnny",
+    "last_name": "Lutz",
+    "role": "Writer",
+    "manager_id": 1
+  },
+  {
+    "first_name": "Cerie",
+    "last_name": "Xerox",
+    "role": "Assistant",
+    "manager_id": 1
+  },
+  {
+    "first_name": "Jenna",
+    "last_name": "Maroney",
+    "role": "Actor",
+    "manager_id": 13
+  },
+  {
+    "first_name": "Tracey",
+    "last_name": "Jordan",
+    "role": "Actor",
+    "manager_id": 13
+  },
+  {
+    "first_name": "Jack",
+    "last_name": "Donaghy",
+    "role": "VP TV & Microwave Programming",
+    "manager_id": ["Geiss", "Don"]
+  },
+  {
+    "first_name": "Don",
+    "last_name": "Geiss",
+    "role": "CEO"
+  },
+  {
+    "first_name": "Devon",
+    "last_name": "Banks",
+    "role": "VP News & Theme Park Talent",
+    "manager_id": ["Geiss", "Don"]
+  },
+  {
+    "first_name": "Jonathan",
+    "last_name": "Pancholy",
+    "role": "Assistant",
+    "manager_id": 8
+  },
+  {
+    "first_name": "Kenneth",
+    "last_name": "Parcell",
+    "role": "Page",
+    "manager_id": 8
+  },
+  {
+    "first_name": "Pete",
+    "last_name": "Hornberger",
+    "role": "Producer",
+    "manager_id": 1
+  }
+]
