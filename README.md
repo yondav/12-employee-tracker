@@ -18,6 +18,7 @@ Employee Tracker is an easy to use CMS to keep track of a company's employees, r
 >   - [Installation](#installation)
 >   - [Usage](#usage)
 >     - [Config](#config)
+>     - [Live Demo](#live-demo)
 >     - [UI](#ui)
 >     - [Start Application](#start-application)
 >   - [Test instructions](#test-instructions)
@@ -99,11 +100,19 @@ module.exports = pass;
 const pass = require('./pass');
 ```
 
+---
+
+### Live Demo
+
+[Video Demonstration](https://youtu.be/MNXzsxjQ-5E)
+
+![view demo](./images/view.gif)
+
+---
+
 ### UI
 
 This is a command line application built using [node](https://nodejs.org/dist/latest-v14.x/docs/api/), [inquirer](https://www.npmjs.com/package/inquirer), [mysql](https://www.npmjs.com/package/mysql) and [chalk](https://www.npmjs.com/package/chalk) for some style.
-
-![view demo](./images/view.gif)
 
 The flow follows a series of prompts based on what the user is trying to do.
 
