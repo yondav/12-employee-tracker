@@ -1,3 +1,10 @@
+/**
+ * /models.index.js
+ *
+ * @description: bringing all of the models together here for export and establishing tne connection to one another
+ *
+ */
+
 const Department = require('./Department');
 const Employee = require('./Employee');
 const Role = require('./Role');

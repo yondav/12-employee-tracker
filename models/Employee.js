@@ -1,3 +1,10 @@
+/**
+ * /models.Employee.js
+ *
+ * @description: extending model for Employee table
+ *
+ */
+
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 

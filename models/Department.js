@@ -1,3 +1,10 @@
+/**
+ * /models.Department.js
+ *
+ * @description: extending model for Department table
+ *
+ */
+
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 

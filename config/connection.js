@@ -1,3 +1,10 @@
+/**
+ * /config/connection.js
+ *
+ * @description: establish connection to mysql and sequelize
+ *
+ */
+
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
@@ -16,4 +23,4 @@ const sequelize = new Sequelize(
 
 sequelize.sync({ force: false });
 
-module.exports = Sequelize;
+module.exports = sequelize;

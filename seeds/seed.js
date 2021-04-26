@@ -1,3 +1,10 @@
+/**
+ * /seeds.seed.js
+ *
+ * @description: seeding data
+ *
+ */
+
 const Sequelize = require('../config/connection');
 const { Department, Employee, Role } = require('../models');
 
