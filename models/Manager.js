@@ -5,12 +5,13 @@
  *
  */
 
+const Employee = require('./Employee');
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Employee extends Model {}
+class Manager extends Employee {}
 
-Employee.init(
+Manager.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -26,29 +27,14 @@ Employee.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    role_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'role',
-        key: 'id',
-      },
-    },
-    manager_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'manager',
-        key: 'id',
-      },
-      allowNull: true,
-    },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'employee',
+    modelName: 'manager',
   }
 );
 
-module.exports = Employee;
+module.exports = Manager;

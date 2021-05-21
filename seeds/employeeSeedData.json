@@ -2,78 +2,78 @@
   {
     "first_name": "Liz",
     "last_name": "Lemon",
-    "role": "Head Writer",
+    "role_id": 1,
     "manager_id": 8
   },
   {
     "first_name": "Frank",
     "last_name": "Rossitano",
-    "role": "Writer",
+    "role_id": 2,
     "manager_id": 1
   },
   {
     "first_name": "Toofer",
     "last_name": "Spurlock",
-    "role": "Writer",
+    "role_id": 2,
     "manager_id": 1
   },
   {
     "first_name": "Johnny",
     "last_name": "Lutz",
-    "role": "Writer",
+    "role_id": 2,
     "manager_id": 1
   },
   {
     "first_name": "Cerie",
     "last_name": "Xerox",
-    "role": "Assistant",
+    "role_id": 3,
     "manager_id": 1
   },
   {
     "first_name": "Jenna",
     "last_name": "Maroney",
-    "role": "Actor",
+    "role_id": 4,
     "manager_id": 13
   },
   {
     "first_name": "Tracey",
     "last_name": "Jordan",
-    "role": "Actor",
+    "role_id": 4,
     "manager_id": 13
   },
   {
     "first_name": "Jack",
     "last_name": "Donaghy",
-    "role": "VP TV & Microwave Programming",
-    "manager_id": ["Geiss", "Don"]
+    "role_id": 5,
+    "manager_id": 9
   },
   {
     "first_name": "Don",
     "last_name": "Geiss",
-    "role": "CEO"
+    "role_id": 6
   },
   {
     "first_name": "Devon",
     "last_name": "Banks",
-    "role": "VP News & Theme Park Talent",
-    "manager_id": ["Geiss", "Don"]
+    "role_id": 7,
+    "manager_id": 6
   },
   {
     "first_name": "Jonathan",
     "last_name": "Pancholy",
-    "role": "Assistant",
+    "role_id": 8,
     "manager_id": 8
   },
   {
     "first_name": "Kenneth",
     "last_name": "Parcell",
-    "role": "Page",
+    "role_id": 9,
     "manager_id": 8
   },
   {
     "first_name": "Pete",
     "last_name": "Hornberger",
-    "role": "Producer",
+    "role_id": 10,
     "manager_id": 1
   }
 ]

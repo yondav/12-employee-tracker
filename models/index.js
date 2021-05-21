@@ -8,9 +8,17 @@
 const Department = require('./Department');
 const Employee = require('./Employee');
 const Role = require('./Role');
+const Manager = require('./Manager');
 
 Employee.hasOne(Role, {
   as: 'role',
+  constraints: false,
+  allowNull: true,
+  defaultValue: null,
+});
+
+Employee.hasOne(Manager, {
+  as: 'manager',
   constraints: false,
   allowNull: true,
   defaultValue: null,
@@ -23,4 +31,4 @@ Role.hasOne(Department, {
   defaultValue: null,
 });
 
-module.exports = { Department, Employee, Role };
+module.exports = { Department, Employee, Manager, Role };

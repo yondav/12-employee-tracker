@@ -26,10 +26,6 @@ Role.init(
       type: DataTypes.DECIMAL(11, 2),
       allowNull: false,
     },
-    // department: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
     department_id: {
       type: DataTypes.INTEGER,
       references: {

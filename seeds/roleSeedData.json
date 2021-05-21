@@ -2,51 +2,51 @@
   {
     "title": "Head Writer",
     "salary": "500000",
-    "department": "Writing"
+    "department": 1
   },
   {
     "title": "Writer",
     "salary": "200000",
-    "department": "Writing"
+    "department": 1
   },
   {
     "title": "Assistant",
     "salary": "65000",
-    "department": "Writing"
+    "department": 1
   },
   {
     "title": "Actor",
     "salary": "1000000",
-    "department": "Performance"
+    "department": 2
   },
   {
     "title": "VP TV & Microwave Programming",
     "salary": "800000000",
-    "department": "Executive"
+    "department": 3
   },
   {
     "title": "CEO",
     "salary": "999999999",
-    "department": "Executive"
+    "department": 3
   },
   {
     "title": "VP News & Theme Park Talent",
     "salary": "300000000",
-    "department": "Executive"
+    "department": 3
   },
   {
     "title": "Assistant",
     "salary": "100000",
-    "department": "Executive"
+    "department": 3
   },
   {
     "title": "Page",
     "salary": "50000",
-    "department": "Executive"
+    "department": 3
   },
   {
     "title": "Producer",
     "salary": "500000",
-    "department": "Production"
+    "department": 4
   }
 ]
